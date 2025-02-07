@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML Events</title>
+
+    </head>
+    <body style="background-color: black; color: aliceblue;">
+        <h2>Amazing items</h2>
+        <div>
+            <ul id="images">
+                <li><img width="50px" id="vintage" src="https://images.pexels.com/photos/30375942/pexels-photo-30375942/free-photo-of-vintage-street-lamp-against-modern-architecture.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" alt="vintage"></li>
+                <li><img width="50px" id="mountain" src="https://images.pexels.com/photos/29861006/pexels-photo-29861006/free-photo-of-majestic-mountain-peaks-shrouded-in-clouds.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" alt=""></li>
+                <li><img width="50px" id="pasteries" src="https://images.pexels.com/photos/12904144/pexels-photo-12904144.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" alt=""></li>
+                <li><img width="50px" id="car" src="https://images.pexels.com/photos/30326244/pexels-photo-30326244/free-photo-of-classic-car-driving-through-snowy-mountain-landscape.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" alt=""></li>
+                <li><img width="50px" id="himalyan" src="https://images.pexels.com/photos/30462129/pexels-photo-30462129/free-photo-of-majestic-himalayan-mountain-landscape.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" alt=""></li>
+                <li><a href="https://www.google.com" style="color: aliceblue;" id="google">Google</a></li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        document.getElementById('images').addEventListener('click', function(e){
+            console.log("Clicked inside the ul")
+        }, false)
+        document.getElementById('pasteries').addEventListener('click', function(e){
+            console.log("pasteries Clicked")
+            e.stopPropagation()
+        }, false)
+        document.getElementById('google').addEventListener('click', function(e){
+            console.log("google Clicked")
+            e.preventDefault()
+        }, false)
+        document.querySelector('#images').addEventListener('click', function(e){
+            console.log(e.target.tagName)
+            if(e.target.tagName === 'IMG'){
+                console.log(e.target.id)
+                let removeIt = e.target.parentNode
+                removeIt.remove()
+            }
+        })
+    </script>
+
+</html>
